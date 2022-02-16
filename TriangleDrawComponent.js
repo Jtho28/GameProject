@@ -9,7 +9,7 @@ class TriangleDrawComponent extends Component
         let updateComponent = this.parent.components.find(c=>c instanceof TriangleUpdateComponent);
 
         ctx.fillstyle = `rgb(${updateComponent.r}, ${updateComponent.g}, ${updateComponent.b})`
-        ctx.strokestyle = "white"
+        ctx.strokestyle = "red"
 
         ctx.beginPath();
         ctx.moveTo(75,50);

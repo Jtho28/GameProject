@@ -50,9 +50,4 @@ class RectangleUpdateComponent extends Component {
     this.y = startY - 50 - this.h / 2 + ease(Time.timePassed) * 50 * percentSquared;
     
   }
-
-  mouseEvent()
-  {
-    console.log("Mouse Event")
-  }
 }

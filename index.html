@@ -15,6 +15,11 @@
     <script src="RectangleDrawComponent.js"></script>
     <script src="RectangleUpdateComponent.js"></script>
     <script src="RectangleGameObject.js"></script>
+    <script src="TriangleDrawComponent.js"></script>
+    <script src="TriangleUpdateComponent.js"></script>
+    <script src="TriangleGameObject.js"></script>
+    
+
 
     <script>
         "use strict"
@@ -29,23 +34,6 @@
         document.addEventListener("mouseup", mouseUp);
         document.addEventListener("keypress", onkeypress)
 
-        function mouseEvent()
-        {
-            for (let object of gameObjects)
-            {
-                for (let componenet of components)
-                {
-                    if(component.mouseEvent)
-                    {
-                        component.mouseEvent();
-                    }
-                }
-            }
-        }
-        function mouseDown()
-        {
-            mouseIsDown = true;
-        }
         function onkeypress(e)
         {
             console.log(e)
@@ -110,8 +98,10 @@
             let b = 0;
 
             gameObjects.push(new RectangleGameObject(x, y, w, h, r, g, b, percent))
-        }
+            gameObjects.push(new TriangleGameObject(ctx, x, y, 50, 50, r, g, b))
 
+        }
+        
         function tick() {
             update()
             draw()
@@ -123,6 +113,10 @@
 
                 rectangle.update();
             }
+            for (let triangle of gameObjects)
+            {
+                triangle.update();
+            }
         }
 
         function draw() {
@@ -132,9 +126,15 @@
             for (let rectangle of gameObjects) {
                 rectangle.draw(ctx);
             }
+            for (let triangle of gameObjects)
+            {
+                triangle.draw(ctx);
+            }
         }
 
         setInterval(tick, Time.millisecondsBetweenFrames)
+        //document.requestAnimationFrame(tick)
+        
 
     </script>
 </body>

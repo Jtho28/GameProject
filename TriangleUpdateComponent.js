@@ -14,6 +14,6 @@ class TriangleUpdateComponent extends Component
     }
     update()
     {
-        this.b = 100
+        this.b = 100;
     }
 }
