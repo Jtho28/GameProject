@@ -15,50 +15,74 @@
     <script src="RectangleDrawComponent.js"></script>
     <script src="RectangleUpdateComponent.js"></script>
     <script src="RectangleGameObject.js"></script>
-    <script src="TriangleDrawComponent.js"></script>
-    <script src="TriangleUpdateComponent.js"></script>
-    <script src="TriangleGameObject.js"></script>
-    
 
 
     <script>
         "use strict"
 
-        let mouseIsDown = false;
         let keyIsDown = false;
         let forwardV = false;
         let backwardV = false;
         let upV = false;
         let downV = false;
-        document.addEventListener("mousedown", mouseDown);
-        document.addEventListener("mouseup", mouseUp);
-        document.addEventListener("keypress", onkeypress)
+        
+        document.addEventListener("keydown", keyDown)
+        document.addEventListener("keyup", keyUp)
 
-        function onkeypress(e)
+        function keyDown(e)
         {
             console.log(e)
-            if(e.charCode == 100)
+            if(e.keyCode == 68)
             {
                 console.log("You hit d")
                 forwardV = true
             }
-            else if(e.charCode == 97)
+            else if(e.keyCode == 65)
             {
                 console.log("You hit a")
                 backwardV = true
             }
-            else if(e.charCode == 119)
+            else if(e.keyCode == 87)
             {
                 console.log("You hit w")
                 upV = true
-
+                console.log(upV)
             }
-            else if(e.charCode == 115)
+            else if(e.keyCode == 83)
             {
+                console.log("You hit s")
                 downV = true
             }
             
         }
+        function keyUp(ed)
+        {
+            console.log(ed)
+            if(ed.keyCode == 68)
+            {
+                console.log("You released d")
+                forwardV = false
+                console.log(forwardV)
+            }
+            else if(ed.charCode == 97)
+            {
+                console.log("You hit a")
+                backwardV = false
+            }
+            else if(ed.charCode == 119)
+            {
+                console.log("You hit w")
+                upV = false
+
+            }
+            else if(ed.charCode == 115)
+            {
+                console.log("You hit s")
+                downV = false
+            }
+        }
+
+
         
 
         function mouseDown() {
@@ -98,7 +122,6 @@
             let b = 0;
 
             gameObjects.push(new RectangleGameObject(x, y, w, h, r, g, b, percent))
-            gameObjects.push(new TriangleGameObject(ctx, x, y, 50, 50, r, g, b))
 
         }
         
@@ -106,16 +129,13 @@
             update()
             draw()
             Time.timePassed += Time.secondsBetweenFrame;
+            //requestAnimationFrame(tick)
         }
 
         function update() {
             for (let rectangle of gameObjects) {
 
                 rectangle.update();
-            }
-            for (let triangle of gameObjects)
-            {
-                triangle.update();
             }
         }
 
@@ -126,14 +146,11 @@
             for (let rectangle of gameObjects) {
                 rectangle.draw(ctx);
             }
-            for (let triangle of gameObjects)
-            {
-                triangle.draw(ctx);
-            }
+            //requestAnimationFrame(draw)
         }
 
         setInterval(tick, Time.millisecondsBetweenFrames)
-        //document.requestAnimationFrame(tick)
+        
         
 
     </script>

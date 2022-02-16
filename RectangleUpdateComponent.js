@@ -21,7 +21,7 @@ class RectangleUpdateComponent extends Component {
   }
   update() {
     this.b = 100;
-    if (forwardV)
+    if (forwardV && this.x + (this.h * 2) < window.innerWidth)
     {
       //this.b = 255;
       this.y += 0
@@ -35,19 +35,19 @@ class RectangleUpdateComponent extends Component {
     }
     else if (upV)
     {
-      this.y -= maxSpeed - (this.percent / 100)
+      this.y -= maxSpeed
       upV = false
     }
     else if (downV)
     {
-      this.y += maxSpeed - (this.percent / 100)
+      this.y += maxSpeed
       downV = false
     }
 
     let h = (1 - (this.percent) * height);
 
-    let percentSquared = this.percent * this.percent;
-    this.y = startY - 50 - this.h / 2 + ease(Time.timePassed) * 50 * percentSquared;
+    //let percentSquared = this.percent * this.percent;
+    //this.y = startY - 50 - this.h / 2 + ease(Time.timePassed) * 50 * percentSquared;
     
   }
 

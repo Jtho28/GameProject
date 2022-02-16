@@ -1,5 +1,5 @@
 class Time{
-  static millisecondsBetweenFrames = 1;
-  static secondsBetweenFrame = .001;
+  static millisecondsBetweenFrames = 12;
+  static secondsBetweenFrame = 0.012;
   static timePassed = 0;
 }
